@@ -1,0 +1,25 @@
+ {% extends "base.html" %}
+ {% load crispy_forms_tags %}
+ {% block content %}
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+        {% if new_news %}
+        <div>Your news is added </div>
+        <div> <a href="{% url 'addNews' %}">Add New News</a></div>
+        {% else %}
+
+            <form action="#" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+               {{ forms|crispy}}
+            <button type="submit" class='btn btn-primary my-2'> Add News</button>
+            </form>
+        {% endif %}
+            </div>
+        
+        </div>
+    
+</div>
+</main>
+{% endblock %}

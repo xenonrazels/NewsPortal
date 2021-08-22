@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+{% block content %} 
+<main>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">NewsID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Update</th>
+            <th scope="col">Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        {% for news in newsList %}
+          <tr>
+            <th scope="row">{{news.id}}</th>
+            <td>{{news}}</td>
+            <td><a href="{% url 'update' news.id %}"> <button class="btn btn-success">Update</button></a></td>
+            <td><a href="{% url 'delete' news.id %}" > <button class="btn btn-danger">Delete</button></a></td>
+          </tr>
+         {% endfor %}
+        </tbody>
+      </table>
+</main>
+{% endblock %}

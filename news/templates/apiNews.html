@@ -1,0 +1,44 @@
+ {% extends "base.html" %}
+{% block content %}
+
+   
+<main>
+    <div class='container'>
+    
+    <div class="row mb-2">
+        
+        <form method="GET" action='#' class="d-flex" >
+            <div class="col-8 mx-2">
+                <input type="search" name="search" class="form-control mx-1" placeholder="Enter the topic you  want to search for news">
+            </div>
+               
+            <button type="submit" class="btn btn-secondary col-2">Search</button>
+      
+         
+        </form>
+        
+
+        <div class="col-12 my-5 ">
+            <div class=" d-flex justify-content-center"><h2>Api News List </h2></div></div>
+            <div class=" d-flex justify-content-center"><h4>Showing result for "{{search_word}}" </h4></div>
+        {% for news in articles %}
+        <div class="col-md-6">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <h3 class="mb-0">{{news.title}}</h3>
+              <div class="mb-1 text-muted">{{news.published_date}} </div>
+              <div class="mb-1 text-muted">{{news.author}} </div>
+              <p class="card-text mb-auto">{{news.summary |truncatewords:30}}</p>
+              <a href="{{news.link}}" class="stretched-link">Continue reading</a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+                <img src="{{news.media}}" width="200px" height="200px" />
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    </main>
+    {% endblock %}
+    
